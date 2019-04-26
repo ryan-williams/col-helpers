@@ -6,6 +6,7 @@ alias ct,="column -t -s,"
 alias colt="col -i \"$t\""
 
 alias spc="splt ' '"
+alias spt="splt $'\t'"
 alias sp:="splt :"
 alias s:="splt :"
 alias sp,="splt ,"
@@ -15,9 +16,13 @@ alias tk,="splt , | trim | kbl"
 
 alias spls="splt ' '"
 
+alias cl=col
+
 alias c,="col -i,"
 alias f,="first -i,"
 alias s,="second -i,"
+
+alias dfc="col 1:"
 
 1c() {
   first "$@"
