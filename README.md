@@ -87,3 +87,42 @@ cat foo | col 1,3:-1
 
 ### `first`, `second`, `last`
 shorthands for `col 0`, `col 1`, and `col -1`, resp.
+
+### `splt`: split N-column lines into N lines each
+```bash
+echo 1 2 3 4 5 | spc
+# 1
+# 2
+# 3
+# 4
+# 5
+echo 1,2,3,4,5 | sp,
+# 1
+# 2
+# 3
+# 4
+# 5
+```
+
+See alias definitions in [`.cols-rc`](./.cols-rc).
+### `column -t` aliases
+Align columns by a given delimiter.
+
+Write some test data:
+```bash
+cat <<EOF>foo
+a,b,c,d,e
+AAAAA,BBBBB,CCCCC,DDDDD,EEEEE
+111,222,333,444,555
+EOF
+```
+
+Format:
+```bash
+ct, foo
+# a      b      c      d      e
+# AAAAA  BBBBB  CCCCC  DDDDD  EEEEE
+# 111    222    333    444    555
+```
+
+See alias definitions in [`.cols-rc`](./.cols-rc).
