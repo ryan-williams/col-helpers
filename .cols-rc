@@ -45,3 +45,15 @@ alias cl1="col 1"
 alias cl2="col 2"
 alias cl3="col 3"
 alias cl4="col 4"
+
+col_sum() {
+    cat | col "$@" | sum
+}
+export -f col_sum
+defn csm col_sum
+
+col_sum_h() {
+    cat | col "$@" | sum | to-human-readable
+}
+export -f col_sum_h
+defn csh col_sum_h
