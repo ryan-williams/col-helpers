@@ -24,27 +24,22 @@ alias s,="second -i,"
 
 alias dfc="col 1:"
 
-1c() {
-  first "$@"
-}
+defn 1c first
+defn 2c second
+defn 3c col 2
+defn 4c col 3
 
-2c() {
-  second "$@"
-}
+defn c0 col 0
+defn c1 col 1
+defn c2 col 2
+defn c3 col 3
+defn c4 col 4
 
-3c() {
-  col 2 "$@"
-}
-
-4c() {
-  col 3 "$@"
-}
-
-alias cl0="col 0"
-alias cl1="col 1"
-alias cl2="col 2"
-alias cl3="col 3"
-alias cl4="col 4"
+defn cl0 col 0
+defn cl1 col 1
+defn cl2 col 2
+defn cl3 col 3
+defn cl4 col 4
 
 col_sum() {
     cat | col "$@" | sum
