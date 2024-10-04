@@ -56,8 +56,15 @@ defn csh col_sum_h
 alias csp="cut -d' ' -f"
 defn csl cut -d/ -f
 
+collapse_whitespace() {
+    tr -s ' \t' ' ' "$@"
+}
+export -f collapse_whitespace
+defn cw collapse_whitespace
+defn cws collapse_whitespace
+
 cut_whitespace() {
-    tr -s ' ' ' ' | cut -d' ' -f "$@"
+    tr -s ' \t' ' ' | cut -d' ' -f "$@"
 }
 export -f cut_whitespace
-defn cw cut_whitespace
+defn cwf cut_whitespace
