@@ -54,6 +54,8 @@ export -f col_sum_h
 defn csh col_sum_h
 
 alias csp="cut -d' ' -f"
+alias cts="cut -d' ' -f"
+alias cus="cut -d' ' -f"
 defn csl cut -d/ -f
 
 collapse_whitespace() {
