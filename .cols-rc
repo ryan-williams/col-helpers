@@ -5,10 +5,10 @@ alias ct,="column -t -s,"
 
 alias colt="col -i \"$t\""
 
-defn spc splt ,
-defn spn splt :
-defn sps splt "'" "'"
-defn spt splt $'\t'
+defn spc tr , '\\n'
+defn spn tr : '\\n'
+defn sps tr "'" "'" '\\n'
+defn spt tr '\\t' '\\n'
 
 alias s:="splt :"
 alias sp:="splt :"
