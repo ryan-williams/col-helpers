@@ -5,12 +5,15 @@ alias ct,="column -t -s,"
 
 alias colt="col -i \"$t\""
 
-alias spc="splt ' '"
-alias spt="splt $'\t'"
-alias sp:="splt :"
+defn spc splt ,
+defn spn splt :
+defn sps splt "'" "'"
+defn spt splt $'\t'
+
 alias s:="splt :"
-alias sp,="splt ,"
+alias sp:="splt :"
 alias s,="splt ,"
+alias sp,="splt ,"
 alias pl="splt /"
 alias tk,="splt , | trim | kbl"
 
