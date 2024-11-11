@@ -1,7 +1,9 @@
-
 alias ct="column -t"
-alias ctt="column -t -s$'\t'"
 alias ct,="column -t -s,"
+alias ctc="column -t -s,"
+alias cts="column -t -s' '"
+alias ctt="column -t -s$'\t'"
+alias tbl="column -t"
 
 alias colt="col -i \"$t\""
 
@@ -56,9 +58,10 @@ col_sum_h() {
 export -f col_sum_h
 defn csh col_sum_h
 
-alias csp="cut -d' ' -f"
-alias cts="cut -d' ' -f"
-alias cus="cut -d' ' -f"
+defn csp cut "-d' '" -f
+defn csf cut "-d' '" -f
+defn ctf cut "-d' '" -f
+defn cus cut "-d' '" -f
 defn csl cut -d/ -f
 
 collapse_whitespace() {
