@@ -11,19 +11,19 @@ parser.add_argument(
     '-i',
     '-in',
     '--in-seperator',
-    #metavar='in',
+    # metavar='in',
     dest="input_delimiter",
-    #action="store_str",
+    # action="store_str",
     type=str,
     help="input field seperator regex",
-    default='\s+'
+    default=r'\s+'
 )
 
 parser.add_argument(
     '-o',
     '-out',
     "--output-delimiter",
-    #metavar="out",
+    # metavar="out",
     dest="output_delimiter",
     type=str,
     help="output field delimiter",
@@ -34,7 +34,7 @@ parser.add_argument(
     '-k',
     '--keep-original-range-spacing',
     dest="keep_original_range_spacing",
-    #type=bool,
+    # type=bool,
     action="store_true",
     help="When true, will preserve input's (white-)spacing in colon-delimited columnar ranges",
     default=False
@@ -42,8 +42,8 @@ parser.add_argument(
 
 args, unknown = parser.parse_known_args()
 
-output_delimiter = args.output_delimiter#.decode('string-escape')
-#print("out delim: %s" % output_delimiter)
+output_delimiter = args.output_delimiter
+
 
 def parse_col(arg):
     segments = arg.split(':')
@@ -54,7 +54,7 @@ def parse_col(arg):
             end = min(start + 2, 0)
         else:
             end = start + 2
-        return (start, None if not end else end)
+        return start, None if not end else end
     if len(segments) == 2:
         start = None
         if segments[0] != '':
@@ -68,9 +68,10 @@ def parse_col(arg):
             if end < 0:
                 end += 1
 
-        return (start, end)
+        return start, end
 
     raise Exception('Malformed arg: %s' % arg)
+
 
 cols = [parse_col(c) for c in unknown[0].split(',')]
 sys.argv = unknown[0:]
@@ -88,12 +89,12 @@ for line in fileinput.input():
 
         if args.keep_original_range_spacing:
             slice = l[
-                    (None if col[0] == None else col[0] + offset):(None if col[1] == None else col[1] + offset)
+                    (None if col[0] is None else col[0] + offset):(None if col[1] is None else col[1] + offset)
             ]
             joiner = ''
         else:
             slice = l[
-                    (None if col[0] == None else col[0]):(None if col[1] == None else col[1]):2
+                    (None if col[0] is None else col[0]):(None if col[1] is None else col[1]):2
             ]
             joiner = output_delimiter
 
