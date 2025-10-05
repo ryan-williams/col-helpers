@@ -79,7 +79,16 @@ sys.argv = unknown[0:]
 from signal import signal, SIGPIPE, SIG_DFL
 signal(SIGPIPE, SIG_DFL)
 
-for line in fileinput.input():
+# Reconfigure stdin to handle encoding errors
+import io
+sys.stdin = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8', errors='replace')
+
+def hook_encoded(encoding='utf-8', errors='replace'):
+    def openhook(filename, mode):
+        return open(filename, mode, encoding=encoding, errors=errors)
+    return openhook
+
+for line in fileinput.input(openhook=hook_encoded()):
     l = re.split('(%s)' % args.input_delimiter, line.strip())
 
     offset = 0
